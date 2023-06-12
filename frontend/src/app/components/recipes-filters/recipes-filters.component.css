@@ -1,0 +1,17 @@
+.search{
+    padding: .5em;
+    width: 60%;
+}
+.btn-search{
+    padding: .5em;
+}
+.filters{
+    display: flex;
+    justify-content: space-between;
+}
+.wrapper{
+    flex-grow: 2;
+}
+.order{
+    width: 20%;
+}

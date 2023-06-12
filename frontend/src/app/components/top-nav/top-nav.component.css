@@ -1,0 +1,27 @@
+ul{
+    display: flex;
+    gap: 1rem;
+    margin-top: 0;
+}
+li{
+    display: flex;
+    align-items: end;
+}
+.link{
+    text-decoration: none;
+    color: black;
+}
+.link:hover{
+    cursor: pointer;
+    color: gray;
+}
+header{
+    border-bottom: solid 1px black;
+}
+.logo{
+    margin: 1rem 0 0 1rem;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    color: black;
+}
