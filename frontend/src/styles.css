@@ -9,12 +9,7 @@ ul{
 body{
     margin: 0;
 }
-.btn{
-    background-color: green;
-    border: solid 1px black;
-    padding: .5em 1em;
-    
-}
-.btn:hover{
-    cursor: pointer;
+.hero-heading{
+    font-weight: 900;
+    font-size: 3rem;
 }
