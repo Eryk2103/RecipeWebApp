@@ -1,44 +1,44 @@
-<form class="mt-3">
+<form class="mt-3" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
-      <input type="text" class="form-control" id="name">
+      <input type="text" class="form-control" id="name" formControlName="name">
     </div>
     <div class="mb-3">
         <label for="description" class="form-label">Description</label>
-        <textarea class="form-control" id="description" rows="5"></textarea>
+        <textarea class="form-control" id="description" rows="5" formControlName="description"></textarea>
       </div>
-    <div>
+    <div *ngIf="instructions.length > 0">
         <p>Instructions</p>
         <ol class="list-group list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between align-items-start">
-                <p class="m-0">List itemd sakjdksadkaskdja d asd asda ds aksdkjffffffffffffffffff fffffffffff ffffffffffffffff fffffffffffffffff</p>
-                <button class="btn btn-close ms-auto"></button>
+            <li class="list-group-item d-flex justify-content-between align-items-start" *ngFor="let instruction of instructions, let idx = index">
+                <p class="m-0">{{instruction}}</p>
+                <button class="btn btn-close ms-auto"  (click)="removeInstruction(idx)"> </button>
             </li>
         </ol>
     </div>
     <div class="mb-3">
         <label for="newInstruction" class="form-label">New instruction</label>
         <div class="input-group mb-3">
-            <input type="text" class="form-control" id="newInstruction">
-            <button type="button" class="btn btn-outline-secondary" type="button">Add</button>
+            <input type="text" class="form-control" id="newInstruction" formControlName="instruction">
+            <button type="button" class="btn btn-outline-secondary" type="button" (click)="addInstruction()">Add</button>
           </div>
        
       </div>
-      <div>
+      <div *ngIf="ingredients.length > 0">
         <p>Ingredients</p>
         <ol class="list-group list-group mb-3">
-            <li class="list-group-item d-flex justify-content-between align-items-center">
-                <p class="m-0">Orange 2</p>
-                <button type="button" class="btn btn-close ms-auto"></button>
+            <li class="list-group-item d-flex justify-content-between align-items-center" *ngFor="let ingredient of ingredients, let idx=index">
+                <p class="m-0">{{ingredient.name + ' ' + ingredient.amount}} </p>
+                <button type="button" class="btn btn-close ms-auto" (click)="removeIngredient(idx)"></button>
             </li>
         </ol>
     </div>
     <div class="mb-3">
         <label class="form-label">Ingredient name and amount</label>
-        <div class="input-group mb-3">
-            <input type="text" class="form-control">
-            <input type="text" class="form-control">
-            <button class="btn btn-outline-secondary" type="button">Add</button>
+        <div class="input-group mb-3" formGroupName="ingredient">
+            <input type="text" class="form-control" formControlName="name">
+            <input type="text" class="form-control" formControlName="amount">
+            <button class="btn btn-outline-secondary" type="button" (click)="addIngredient()">Add</button>
           </div>
        
       </div>

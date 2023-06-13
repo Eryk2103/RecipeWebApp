@@ -1,0 +1,9 @@
+<div class="d-flex justify-content-center mt-3" *ngIf="page && lastPage">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination">
+          <li class="page-item"><button class="page-link" (click)="previousPage()">Previous</button></li>
+          <li class="page-item"><p class="page-link">{{page + '/' + lastPage}}</p></li>
+          <li class="page-item"><button class="page-link" (click)="nextPage()">Next</button></li>
+        </ul>
+      </nav>
+</div>

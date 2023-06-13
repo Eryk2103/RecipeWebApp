@@ -10,6 +10,9 @@ import { RecipesListComponent } from './components/recipes-list/recipes-list.com
 import { RecipesFiltersComponent } from './components/recipes-filters/recipes-filters.component';
 import { NewRecipePageComponent } from './components/new-recipe-page/new-recipe-page.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PaginatorComponent } from './components/paginator/paginator.component';
 
 @NgModule({
   declarations: [
@@ -21,10 +24,13 @@ import { RecipeFormComponent } from './components/recipe-form/recipe-form.compon
     RecipesFiltersComponent,
     NewRecipePageComponent,
     RecipeFormComponent,
+    PaginatorComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

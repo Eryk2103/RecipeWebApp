@@ -2,14 +2,6 @@
 <div class="list-group">
     <a class="list-group-item list-group-item-action" *ngFor="let recipe of recipes">{{recipe.name}}</a>
 </div>
-<div class="d-flex justify-content-center mt-3">
-    <nav aria-label="Page navigation example">
-        <ul class="pagination">
-          <li class="page-item"><button class="page-link">Previous</button></li>
-          <li class="page-item"><p class="page-link">2 / 3</p></li>
-          <li class="page-item"><button class="page-link">Next</button></li>
-        </ul>
-      </nav>
-</div>
+<app-paginator [page]="page" [lastPage]="lastPage" (pageChange)="onPageChange($event)"></app-paginator>
 
 

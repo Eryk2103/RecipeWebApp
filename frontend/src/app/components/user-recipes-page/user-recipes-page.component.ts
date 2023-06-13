@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./user-recipes-page.component.css']
 })
 export class UserRecipesPageComponent {
+  searchStr: string = '';
 
+  search(searchValue: string){
+    this.searchStr = searchValue;
+  }
 }

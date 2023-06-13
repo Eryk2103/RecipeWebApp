@@ -6,8 +6,8 @@
             <div class="d-grid col-12 col-lg-3">
                 <button type="button" class="btn btn-primary mb-3" [routerLink]="'/new-recipe'">New recipe</button>
             </div>
-            <app-recipes-filters></app-recipes-filters>
-            <app-recipes-list></app-recipes-list>
+            <app-recipes-filters (onSearch)="search($event)"></app-recipes-filters>
+            <app-recipes-list [searchStr]="searchStr"></app-recipes-list>
         </main>
     </div>
     <div class="col-lg-2"></div>
