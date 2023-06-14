@@ -1,0 +1,44 @@
+<div class="container">
+    <div *ngIf="error" class="d-flex justify-content-center align-items-center mt-5">
+        You can't access this recipe. Only author of this recipe can view it.
+    </div>
+    <div class="row mt-5" *ngIf="recipe">
+        <h1 class="text-center">{{recipe.name}}</h1>
+        <div class="col-lg-6 mt-5">
+            <h3>Description</h3>
+            <div>      
+                {{recipe.description}}
+            </div>
+            <h3 class="mt-3">Instructions</h3>
+            <div class="mt-3">
+                <ol class="list-group list-group-numbered">
+                    <li class="list-group-item" *ngFor="let instruction of recipe.instructions">
+                        {{instruction}}
+                    </li>
+                </ol>
+            </div>
+        </div>
+        <div class="col-lg-6 mt-5">
+            <div class="position-sticky top-0">
+                <h3>Ingredients</h3>
+                <table class="table table-striped">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let ingredient of recipe.ingredients, let idx=index">
+                        <th scope="row">{{idx}}</th>
+                        <td>{{ingredient.name}}</td>
+                        <td>{{ingredient.amount}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+        </div>
+    </div>
+</div>

@@ -9,7 +9,8 @@ export const RecipeSchema = new mongoose.Schema({
     name: String,
     description: String,
     instructions: [String],
-    ingredients: [IngredientSchema]
+    ingredients: [IngredientSchema],
+    username: String
 }).index({
     name: 'text'
 })

@@ -1,14 +1,15 @@
-
-<div class="row">
-    <div class="col-lg-2"></div>
-    <div class="col-lg-8">
-        <main class="mt-5 px-4">
-            <div class="d-grid col-12 col-lg-3">
-                <button type="button" class="btn btn-primary mb-3" [routerLink]="'/new-recipe'">New recipe</button>
-            </div>
-            <app-recipes-filters (onSearch)="search($event)"></app-recipes-filters>
-            <app-recipes-list [searchStr]="searchStr"></app-recipes-list>
-        </main>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-lg-8">
+            <main class="mt-5">
+                <div class="d-grid col-12 col-lg-3">
+                    <button type="button" class="btn btn-primary mb-3" [routerLink]="'/new-recipe'">New recipe</button>
+                </div>
+                <app-recipes-filters (onSearch)="search($event)"></app-recipes-filters>
+                <app-recipes-list [searchStr]="searchStr"></app-recipes-list>
+            </main>
+        </div>
+        <div class="col-lg-2"></div>
     </div>
-    <div class="col-lg-2"></div>
 </div>

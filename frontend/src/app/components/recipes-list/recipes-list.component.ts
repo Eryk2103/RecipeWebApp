@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Recipe } from 'src/app/models/recipe';
 import { RecipeService } from 'src/app/services/recipe.service';
 
@@ -14,7 +15,7 @@ export class RecipesListComponent implements OnInit{
   @Input()
   searchStr : string = '';
 
-  constructor(private recipeService: RecipeService){}
+  constructor(private recipeService: RecipeService, private router: Router){}
 
   ngOnInit(){
     this.loadData(this.searchStr);
@@ -28,7 +29,11 @@ export class RecipesListComponent implements OnInit{
       this.recipes = res.data;
       this.page = res.currentPage;
       this.lastPage = res.totalPages;
-      console.log(res)
+
+    }, e => {
+      if(e.status === 401){
+        this.router.navigateByUrl('/login');
+      }
     });
   }
   onPageChange(e: number){

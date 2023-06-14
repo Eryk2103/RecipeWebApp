@@ -13,11 +13,12 @@ export class AuthService {
         throw new NotFoundException('User not found');
     }
     if (!await bcrypt.compare(pass, user.password)) {
-      throw new UnauthorizedException();
+      throw new BadRequestException('Invalid credentials');
     }
     const payload = { sub: user.id, username: user.username };
     return {
       access_token: await this.jwtService.signAsync(payload),
+      username: user.username
     };
   }
   async register(username: string, pass: string) {

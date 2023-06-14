@@ -13,6 +13,9 @@ import { RecipeFormComponent } from './components/recipe-form/recipe-form.compon
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/paginator/paginator.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { RecipeDetailPageComponent } from './components/recipe-detail-page/recipe-detail-page.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +28,9 @@ import { PaginatorComponent } from './components/paginator/paginator.component';
     NewRecipePageComponent,
     RecipeFormComponent,
     PaginatorComponent,
+    LoginComponent,
+    RegisterComponent,
+    RecipeDetailPageComponent,
   ],
   imports: [
     BrowserModule,

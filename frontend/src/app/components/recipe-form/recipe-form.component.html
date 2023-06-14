@@ -1,3 +1,6 @@
+<div class="alert alert-danger" *ngIf="error">
+    {{error}}
+</div>
 <form class="mt-3" [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
     <div class="mb-3">
       <label for="name" class="form-label">Name</label>
