@@ -9,7 +9,7 @@ import { CurrentUser } from '../models/currentUser';
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly url = "http://localhost:3000/auth";
+  private readonly url = "http://15.236.90.107:3000/auth";
 
   username = new BehaviorSubject<string | undefined>(undefined);
 

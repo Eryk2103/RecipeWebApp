@@ -9,7 +9,7 @@ import { AuthService } from './auth.service';
   providedIn: 'root'
 })
 export class RecipeService {
-  private readonly url = "http://localhost:3000/recipes";
+  private readonly url = "http://15.236.90.107:3000/recipes";
   private readonly token = this.authService.getToken();
 
   constructor(private http: HttpClient, private authService: AuthService) { }
