@@ -1,0 +1,5 @@
+runtime: nodejs18
+
+env_variables:
+  DB : "mongodb+srv://root:root@cluster0.huoqmq3.mongodb.net/RecipeDb?retryWrites=true&w=majority"
+  SECRET : "secretabcdef1234"
