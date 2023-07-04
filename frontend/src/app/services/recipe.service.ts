@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe';
 import { RecipeResponse } from '../models/recipeResponse';
 import { AuthService } from './auth.service';
-import { map } from 'rxjs';
+import { map, tap } from 'rxjs';
 
 
 @Injectable({
@@ -11,9 +11,11 @@ import { map } from 'rxjs';
 })
 export class RecipeService {
   private readonly url = "http://15.236.90.107:3000/recipes";
-  private readonly token = this.authService.user$.pipe(map(user => user?.access_token));
+  private token : string | undefined;
 
-  constructor(private http: HttpClient, private authService: AuthService) { }
+  constructor(private http: HttpClient, private authService: AuthService) {
+    this.authService.user$.pipe(map(user => user?.access_token), tap( token => this.token = token)).subscribe();
+   }
 
   getRecipes(search: string, page: number = 1) {
     const params = new HttpParams()

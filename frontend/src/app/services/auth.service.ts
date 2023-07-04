@@ -21,7 +21,7 @@ export class AuthService {
 
     const token = localStorage.getItem('token');
     if(token){
-      this.getUser(token).subscribe({
+      this.getUser(token).pipe(map(res => <User>{username: res.username, access_token: token} )).subscribe({
         next: user => this.subject.next(user)
       });
     }
