@@ -9,9 +9,5 @@ import { AuthService } from './services/auth.service';
 export class AppComponent{
   title = 'recipeDb';
 
-  constructor(private authService: AuthService) {
-    this.authService.getUser().subscribe(res => {
-      this.authService.username.next(res.username);
-    });
-  }
+  constructor() {}
 }

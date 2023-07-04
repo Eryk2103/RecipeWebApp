@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Observable, map } from 'rxjs';
 import { Recipe } from 'src/app/models/recipe';
 import { RecipeService } from 'src/app/services/recipe.service';
 
@@ -24,17 +25,12 @@ export class RecipesListComponent implements OnInit{
     this.loadData(this.searchStr);
   }
   loadData(search: string, page: number = 1){
-    
     this.recipeService.getRecipes(search, page).subscribe( res => {
       this.recipes = res.data;
       this.page = res.currentPage;
       this.lastPage = res.totalPages;
-
-    }, e => {
-      if(e.status === 401){
-        this.router.navigateByUrl('/login');
-      }
-    });
+    })
+    
   }
   onPageChange(e: number){
     this.loadData(this.searchStr, e)

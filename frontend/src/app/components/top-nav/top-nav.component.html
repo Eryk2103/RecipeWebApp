@@ -14,11 +14,11 @@
           </li>
         </ul>
        
-        <div class="ms-auto d-flex flex-column flex-lg-row gap-3 mt-4 mt-lg-0" *ngIf="!username">
+        <div class="ms-auto d-flex flex-column flex-lg-row gap-3 mt-4 mt-lg-0" *ngIf="(this.authService.isLoggedIn$ | async) === false">
           <button class="btn btn-primary" [routerLink]="['/login']">Login</button>
           <button class="btn btn-primary mt-4 mt-lg-0" [routerLink]="['/register']">Register</button>
         </div>
-        <div class="ms-auto d-flex flex-column flex-lg-row gap-3 mt-4 mt-lg-0" *ngIf="username">
+        <div class="ms-auto d-flex flex-column flex-lg-row gap-3 mt-4 mt-lg-0" *ngIf="this.authService.isLoggedIn$ | async">
           <button class="btn btn-primary" (click)="logout()">Logout</button>
         </div>
       </div>

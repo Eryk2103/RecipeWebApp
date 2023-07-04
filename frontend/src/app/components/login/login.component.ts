@@ -35,20 +35,17 @@ export class LoginComponent {
     if(!this.validate()){
       return;
     }
-    const user = <User>{
-      username: this.loginForm.get('username')?.value,
-      password: this.loginForm.get('password')?.value
-    };
+  
+    const username = this.loginForm.get('username')?.value;
+    const password = this.loginForm.get('password')?.value;
 
-    this.authService.login(user).subscribe(res => {
-      this.authService.setToken(res.access_token);
-      this.authService.username.next(res.username);
-      this.router.navigateByUrl('/recipes');
-    },e=>{
-      if(e.status === 400){
-        this.error = 'Invalid credentials'
-      }
-    });
-   
+    if(username && password){
+      this.authService.login(username , password).subscribe(
+        {
+          next: () => this.router.navigateByUrl('/recipes'),
+          error:  e => this.error = "Invalid credentials"
+        }
+      );
+    }
   }
 }

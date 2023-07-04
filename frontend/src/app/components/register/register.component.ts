@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { RegisterUser } from 'src/app/models/registerUser';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -34,16 +35,13 @@ export class RegisterComponent {
     if(!this.validate()){
       return;
     }
-    const user = <User>{
+    const user = <RegisterUser>{
       username: this.registerForm.get('username')?.value,
       password: this.registerForm.get('password')?.value,
     }
-    this.authService.register(user).subscribe(res => {
-      this.router.navigateByUrl('/login');
-    }, e=> {
-      if(e.status === 400){
-        this.error = "User with this username already exists"
-      }
+    this.authService.register(user).subscribe({
+      next: () => this.router.navigateByUrl('/login'),
+      error: (e) => this.error = "User with this username already exists"
     });
   }
 }

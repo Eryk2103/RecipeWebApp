@@ -7,21 +7,13 @@ import { AuthService } from 'src/app/services/auth.service';
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.css']
 })
-export class TopNavComponent implements OnInit{
+export class TopNavComponent{
 
-  username: string | undefined = undefined;
-  constructor(private authService: AuthService, private router: Router){
+  constructor(public authService: AuthService){
 
-  }
-  ngOnInit(){
-    this.authService.username.subscribe(u => {
-      this.username = u;
-    })
   }
   
   logout(){
     this.authService.logout();
-    this.username = '';
-    this.router.navigateByUrl('/');
   }
 }
