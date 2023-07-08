@@ -4,13 +4,13 @@ import { Recipe } from '../models/recipe';
 import { RecipeResponse } from '../models/recipeResponse';
 import { AuthService } from './auth.service';
 import { map, tap } from 'rxjs';
-
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RecipeService {
-  private readonly url = "http://15.236.90.107:3000/recipes";
+  private readonly url = environment.api_url + "recipes";
   private token : string | undefined;
 
   constructor(private http: HttpClient, private authService: AuthService) {

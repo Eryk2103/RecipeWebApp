@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { User } from '../models/user';
 import { BehaviorSubject, Observable, map, shareReplay, tap } from 'rxjs';
 import { RegisterUser } from '../models/registerUser';
-
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  private readonly url = "http://15.236.90.107:3000/auth";
+  private readonly url = environment.api_url + "auth";
   private subject = new BehaviorSubject<User|null>(null);
 
   user$: Observable<User|null> = this.subject.asObservable();
