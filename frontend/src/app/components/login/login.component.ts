@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { tap } from 'rxjs';
 import { User } from 'src/app/models/user';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -18,7 +19,15 @@ export class LoginComponent {
 
   error: string = '';
 
-  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) {
+    authService.isLoggedIn$.pipe(
+      tap(
+        (isLoggedIn) => {
+          if(isLoggedIn === true) 
+            router.navigateByUrl('/recipes')
+        }
+      )).subscribe();
+  }
   
   validate(){
     if(this.loginForm.get('username')?.invalid){

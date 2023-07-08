@@ -2,9 +2,6 @@
 <div class="list-group" *ngIf="recipes.length > 0">
     <a class="list-group-item list-group-item-action" *ngFor="let recipe of recipes" [routerLink]="['/recipe/' + recipe._id]">{{recipe.name}}</a>
 </div>
-<div *ngIf="recipes.length === 0 && searchStr===''" class="d-flex justify-content-center align-items-center">
-    <p>Create your first recipe by clicking the "new recipe" button</p>
-</div>
 <div *ngIf="recipes.length === 0 && searchStr" class="d-flex justify-content-center align-items-center">
     <p>No recipes found</p>
 </div>
