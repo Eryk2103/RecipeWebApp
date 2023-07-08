@@ -10,12 +10,13 @@ import { RecipesListComponent } from './components/recipes-list/recipes-list.com
 import { RecipesFiltersComponent } from './components/recipes-filters/recipes-filters.component';
 import { NewRecipePageComponent } from './components/new-recipe-page/new-recipe-page.component';
 import { RecipeFormComponent } from './components/recipe-form/recipe-form.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PaginatorComponent } from './components/paginator/paginator.component';
 import { LoginComponent } from './components/login/login.component';
 import { RegisterComponent } from './components/register/register.component';
 import { RecipeDetailPageComponent } from './components/recipe-detail-page/recipe-detail-page.component';
+import { AuthInterceptor } from './auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import { RecipeDetailPageComponent } from './components/recipe-detail-page/recip
     HttpClientModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [ {provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

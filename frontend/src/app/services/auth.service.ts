@@ -50,6 +50,6 @@ export class AuthService {
   }
 
   private getUser(token: string){
-    return this.http.get<User>(this.url + '/user',{headers: { Authorization: 'Bearer '+ token}});
+    return this.http.get<User>(this.url + '/user', {headers: { Authorization: 'Bearer '+ token}});
   }
 }
